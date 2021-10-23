@@ -2,13 +2,15 @@ language: python
 
 python:
     - "3.8"
+env:
+    - SECRET_KEY='jjsdfynagga'
 services:
-  - docker
-
-before_script: pip install docker-compose
+   - postgresql
+install:
+    - pipenv install
 
 script:
-  - docker-compose run web sh -c "python manage.py test"
+    -  python manage.py test
 
 notifications:
   email:
